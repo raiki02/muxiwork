@@ -6,8 +6,21 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sync"
 	"time"
 )
+
+var wg sync.WaitGroup
+
+func getOrder(out <-chan int) {
+	x, ok := <-out
+	if x == 0 || !ok {
+		return
+	}
+
+	fmt.Printf("Goroutine %d is now working ! \n", x)
+	defer wg.Done()
+}
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
@@ -16,7 +29,12 @@ func main() {
 		r := rand.Intn(100)
 		order <- r
 		fmt.Print(" ", r)
+		wg.Add(1)
 
+	}
+
+	for i := 0; i < 20; i++ {
 		go getOrder(order)
 	}
+	wg.Wait()
 }
