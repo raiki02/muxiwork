@@ -11,5 +11,6 @@ if len(consumeMSG) >= ConsumeNum {
           consumeMSG = consumeMSG[ConsumeNum:]
 ```
 
+--
 **异步消费处理和更新消费时间，清除插入数据不同步，消费在新 goroutine，更新，插入在主 goroutine**
 另一情况同上

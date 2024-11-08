@@ -1,7 +1,7 @@
 /*交叉打印下面两个字符串
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "0123..."
 得到："AB01CD23EF34..."*/
-
+//
 package main
 
 import (
