@@ -54,7 +54,9 @@ func main() {
 				fn(m)
 				lastConsumeTime = time.Now()
 				consumeMSG = consumeMSG[ConsumeNum:]
+
 			}()
+
 			//lastConsumeTime = time.Now()
 			//	consumeMSG = consumeMSG[ConsumeNum:]
 		} else if !lastConsumeTime.IsZero() && time.Since(lastConsumeTime) > 5*time.Minute {
