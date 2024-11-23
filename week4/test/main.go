@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/Grand-Theft-Auto-In-CCNU-MUXI/hacker-support/httptool"
 	// "github.com/Grand-Theft-Auto-In-CCNU-MUXI/hacker-support/httptool"
 )
@@ -28,7 +29,6 @@ func main() {
 		fmt.Println("failed to send request due to the error:", err)
 		return
 	}
-
 	// 打印响应
 	fmt.Println("Response:", resp)
 }

@@ -160,28 +160,28 @@ func main() {
 
 	// ctt, _ = ioutil.ReadAll(res.Body)
 	// fmt.Println(string(ctt))
-	//4.2
-	// request, _ := httptool.NewRequest(
-	// 	httptool.GETMETHOD,
-	// 	"http://gtainmuxi.muxixyz.com/api/v1/organization/iris_sample",
-	// 	"",
-	// 	httptool.DEFAULT,
-	// )
-	// request.AddHeader("passport", pp)
-	// response, _ := request.SendRequest()
-	// _ = response.Save("iris_sample.jpg")
+	4.2
+	request, _ := httptool.NewRequest(
+		httptool.GETMETHOD,
+		"http://gtainmuxi.muxixyz.com/api/v1/organization/iris_sample",
+		"",
+		httptool.DEFAULT,
+	)
+	request.AddHeader("passport", pp)
+	response, _ := request.SendRequest()
+	_ = response.Save("iris_sample.jpg")
 
-	// request, _ = httptool.NewRequest(
-	// 	httptool.POSTMETHOD,
-	// 	"http://gtainmuxi.muxixyz.com/api/v1/bank/iris_recognition_gate",
-	// 	"iris_sample.jpg",
-	// 	httptool.FILE,
-	// )
-	// request.AddHeader("passport", pp)
-	// response, _ = request.SendRequest()
-	// response.ShowBody()
-	//mp, _ := response.GetHeader("map-fragments")
-	//fmt.Println("mp = ", mp)
+	request, _ = httptool.NewRequest(
+		httptool.POSTMETHOD,
+		"http://gtainmuxi.muxixyz.com/api/v1/bank/iris_recognition_gate",
+		"iris_sample.jpg",
+		httptool.FILE,
+	)
+	request.AddHeader("passport", pp)
+	response, _ = request.SendRequest()
+	response.ShowBody()
+	mp, _ := response.GetHeader("map-fragments")
+	fmt.Println("mp = ", mp)
 
 	//5
 	//t("organization/code")
