@@ -8,6 +8,7 @@ import (
 )
 
 var dsn string = "root:lost9725ost@tcp(127.0.0.1:3306)/sms"
+
 var DB *sqlx.DB
 var err error
 

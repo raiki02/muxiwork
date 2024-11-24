@@ -23,5 +23,8 @@ func initUser(r *gin.Engine) {
 	{
 		register.POST("/", web.REGISTER)
 	}
-
+	logout := v1.Group("/logout")
+	{
+		logout.GET("/", middleware.Auth(), web.LOGOUT)
+	}
 }

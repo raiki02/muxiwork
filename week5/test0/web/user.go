@@ -27,20 +27,17 @@ func ADD(c *gin.Context) {
 	c.Redirect(302, "/v1/register")
 }
 
-// 拿到原本的user_id, username, password
-// 然后更新password
-// 最後回傳更新後的user_id, username, password//√
-// how?
 func UPDATE(c *gin.Context) {
-	var temp_user user.User
+	var temp_user user.Update_user
 	c.ShouldBindJSON(&temp_user)
 	c.JSON(200, gin.H{
 
 		"msg":          "user" + temp_user.User_id + ": you want to update password",
 		"username":     temp_user.Username,
-		"new_password": temp_user.Password,
+		"old_password": temp_user.Old_Password,
+		"new_password": temp_user.New_Password,
 	})
-	database.Update_password(temp_user.Username, temp_user.Password, temp_user.Password)
+	database.Update_password(temp_user.Username, temp_user.New_Password, temp_user.Old_Password)
 }
 
 func DELETE(c *gin.Context) {
@@ -60,6 +57,7 @@ func LOGIN(c *gin.Context) {
 		cookie = "1145141919810"
 		c.SetCookie("my_cookie", cookie, 3600, "/", "localhost", false, true)
 	}
+	database.Query(temp_user.User_id)
 
 	c.JSON(200, gin.H{
 		"msg":      "login success",
@@ -67,7 +65,6 @@ func LOGIN(c *gin.Context) {
 		"username": temp_user.Username,
 		"password": temp_user.Password,
 	})
-	database.Query(temp_user.User_id)
 }
 
 func REGISTER(c *gin.Context) {
@@ -91,4 +88,19 @@ func REGISTER(c *gin.Context) {
 		"password": temp_user.Password,
 	})
 	database.Insert(temp_user.User_id, temp_user.Username, temp_user.Password)
+}
+
+func LOGOUT(c *gin.Context) {
+	cookie, err := c.Cookie("my_cookie")
+	if err != nil {
+		c.JSON(400, gin.H{
+			"msg": "logout failed, check your cookie first",
+		})
+		return
+	}
+	c.SetCookie("my_cookie", cookie, -1, "/", "localhost", false, true)
+
+	c.JSON(200, gin.H{
+		"msg": "logout success",
+	})
 }

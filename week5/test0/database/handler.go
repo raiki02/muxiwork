@@ -17,8 +17,8 @@ func Insert(user_id, username, password string) {
 	fmt.Println("insert success, the id is ", id)
 }
 
-func Update_password(username, old_password, new_password string) {
-	sql := `update users set password = ? where username  = ? &&  password = ?`
+func Update_password(username, new_password, old_password string) {
+	sql := `update users set password = ? where username  = ? and password = ? `
 	_, err = DB.Exec(sql, new_password, username, old_password)
 	if err != nil {
 		fmt.Println("update failed, err: ", err)
