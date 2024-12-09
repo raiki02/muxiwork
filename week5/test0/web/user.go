@@ -1,6 +1,7 @@
 package web
 
 import (
+	"fmt"
 	"net/http"
 	"sms/database"
 	"sms/user"
@@ -68,14 +69,16 @@ func LOGIN(c *gin.Context) {
 }
 
 func REGISTER(c *gin.Context) {
-	temp_user := user.User{}
+	var temp_user user.User
 	err := c.ShouldBindJSON(&temp_user)
+	fmt.Println("??? err = ", err)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"msg": "register failed",
 		})
 		return
 	}
+
 	cookie, err := c.Cookie("my_cookie")
 	if err != nil {
 		cookie = "1145141919810"

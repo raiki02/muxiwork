@@ -7,7 +7,7 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-var dsn string = "root:lost9725ost@tcp(127.0.0.1:3306)/sms"
+var dsn string = "user_name:user_password@tcp(127.0.0.1:3306)/database_name"
 
 var DB *sqlx.DB
 var err error
