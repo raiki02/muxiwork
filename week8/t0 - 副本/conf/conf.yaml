@@ -21,7 +21,7 @@ mysql:
 #}
 
 
-//???
+# ???
 #  create table books(
 #    id int primary key auto_increment,
 #    author varchar(255) not null,
