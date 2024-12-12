@@ -6,10 +6,13 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"t0/logs"
 	"t0/routers"
 )
 
 func main() {
+	logs.InitGin()
+	
 	r := gin.Default()
 
 	routers.InitRouters(r)

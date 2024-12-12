@@ -1,0 +1,42 @@
+mysql:
+  port: 3306
+  host: host
+  user: user
+  password: password
+  dbname: dbname
+
+
+
+#  type Book struct {
+#  Author string
+#  Name   string
+#  Model  *gorm.Model
+#  IsLent bool
+#}
+#
+#  type User struct {
+#  UserName string
+#  Password string
+#  Model    *gorm.Model
+#}
+
+
+//???
+#  create table books(
+#    id int primary key auto_increment,
+#    author varchar(255) not null,
+#    name varchar(255) not null,
+#    is_lent enum('true','false') default 'false' not null
+#    createdat timestamp default current_timestamp,
+#    updatedat timestamp default current_timestamp on update current_timestamp,
+#    deletedat timestamp
+#  );
+
+#  create table users(
+#    id int primary key auto_increment,
+#    username varchar(255) not null,
+#    password varchar(255) not null,
+#    createdat timestamp default current_timestamp,
+#    updatedat timestamp default current_timestamp on update current_timestamp
+#    deletedat timestamp
+#  );

@@ -1,9 +1,10 @@
 package model
 
-type BookInfo struct {
-	ID       string `json:"id" validate:"required"`
-	Name     string `json:"name" validate:"required"`
-	Author   string `json:"author" validate:"required"`
-	Category string `json:"category" validate:"required"`
-	IsLent   bool   `json:"is_lent" validate:"required"`
+import "gorm.io/gorm"
+
+type Book struct {
+	Author string `gorm:"column:author; not null" json:"author"`
+	Name   string `gorm:"column:name; not null" json:"name"`
+	Model  *gorm.Model
+	IsLent bool `gorm:"column:is_lent; default:false; enum:'true;false'" json:"is_lent"`
 }
